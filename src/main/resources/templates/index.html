@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Home Page</title>
+        <!-- Bootstrap CSS -->
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Custom styles -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+        <style>
+            body {
+                background-color: #f8f9fa;
+            }
+            /* Adjust search bar width */
+            .search-bar {
+                width: 100%;
+            }
+            .card-img-top {
+                width: 100%;
+                height: 200px; /* Adjust the height as needed */
+                object-fit: cover;
+                border-radius: 8px;
+                transition: transform 0.3s ease-in-out; /* Smooth transition for transform */
+            }
+            .card {
+                margin-bottom: 20px;
+            }
+            .card-body {
+                text-align: center;
+            }
+            footer {
+                background-color: #343a40;
+                color: white;
+                padding: 20px 0;
+            }
+            .hover-bold {
+                transform: scale(1.1); /* Scale image to make it bold */
+            }
+        </style>
+    </head>
+    <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Shisanyama</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li th:if="${loginSuccess==null}" class="nav-item">
+                        <a class="nav-link" href="http://localhost:8080/loginPage">Login</a>
+                    </li>
+                    <li th:if="${loginSuccess==null}" class="nav-item">
+                        <a class="nav-link" href="signup_page.html">Register</a>
+                    </li>
+                    <li th:if="${loginSuccess!=null}" class="nav-item">
+                        <a class="nav-link" href="http://localhost:8080/logout">Logout</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"  href="http://localhost:8080/profile">My Account</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://localhost:8080/go_to_cart">
+                            <i class="fas fa-shopping-cart"></i> Cart <span class="badge badge-pill badge-primary" th:text="${count}"></span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mt-5">
+        <div class="row">
+            <!-- Left Section -->
+            <div class="col-md-3">
+                <section>
+                    <h2 class="text-left mb-4">Food Categories</h2>
+                    <ul class="list-group">
+                        <li class="list-group-item"><a href="#chicken">Chicken</a></li>
+                        <li class="list-group-item"><a href="#beef">Beef</a></li>
+                        <li class="list-group-item"><a href="#pork">Pork</a></li>
+                        <button class="btn btn-info" onclick="window.location.href='http://localhost:8080/go_to_cart'">Go To Cart</button>
+                    </ul>
+                </section>
+            </div>
+
+            <!-- Right Section -->
+            <div class="col-md-9">
+                <section id="chicken">
+                    <h2 class="text-center mb-4" >Flamed Grilled Chicken</h2>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card">
+                              <form action="http://localhost:8080/addToCart" method="post">
+                                  <img src="photo/full_chicken.jpg" class="card-img-top hover-img" alt="Food 1">
+                                <div class="card-body">
+                                    <h5 class="card-title">Full Chicken R150</h5>
+                                    <input type="hidden" name="title" value="Full Chicken">
+                                    <input type="hidden" name="price" value="150">
+                                    <input type="hidden" name="image" value="photo/full_chicken.jpg">
+                                    <button type="submit" class="btn btn-success">Add to Cart</button>
+                                </div>
+                              </form>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card">    <form action="http://localhost:8080/addToCart" method="post">
+                                <img src="photo/quater_chicken.jpg" class="card-img-top hover-img" alt="Food 2">
+                                <div class="card-body">
+                                    <h5 class="card-title">Quater Chicken R45</h5>
+                                    <input type="hidden" name="title" value="Quater Chicken">
+                                    <input type="hidden" name="price" value="45">
+                                    <input type="hidden" name="image" value="photo/quater_chicken.jpg">
+                                    <button class="btn btn-success" type="submit">Add to Cart</button>
+                                </div>
+                            </form>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card">    <form action="http://localhost:8080/addToCart" method="post">
+                               <img src="photo/pieces.jpeg" class="card-img-top hover-img" alt="Food 3">
+                                <div class="card-body">
+                                    <h5 class="card-title">8 Chicken Pieces R80</h5>
+                                    <input type="hidden" name="title" value="8 Chicken Pieces">
+                                    <input type="hidden" name="price" value="80">
+                                    <input type="hidden" name="image" value="photo/pieces.jpeg">
+                                    <button class="btn btn-success" type="submit">Add to Cart</button>
+                                </div>
+                            </form>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card">
+                                <form action="http://localhost:8080/addToCart" method="post">
+                                <img src="photo/half_chicken.jpeg" class="card-img-top hover-img" alt="Food 1">
+                                <div class="card-body">
+                                    <h5 class="card-title">Half Chicken hot/mild R90</h5>
+                                    <input type="hidden" name="title" value="Half Chicken hot/mild">
+                                    <input type="hidden" name="price" value="90">
+                                    <input type="hidden" name="image" value="photo/half_chicken.jpeg">
+                                    <button class="btn btn-success">Add to Cart</button>
+                                </div>
+                            </form>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card">    <form action="http://localhost:8080/addToCart" method="post">
+                                <img src="photo/combination.png" class="card-img-top hover-img" alt="Food 2">
+                                <div class="card-body">
+                                    <h5 class="card-title">Quater Chicken + Pork Ribs + medium Chips R65</h5>
+                                    <input type="hidden" name="title" value="Quater Chicken + Pork Ribs + medium Chips">
+                                    <input type="hidden" name="price" value="65">
+                                    <input type="hidden" name="image" value="photo/combination.png">
+                                    <button class="btn btn-success" type="submit">Add to Cart</button>
+                                </div>
+                            </form>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card">    <form action="http://localhost:8080/addToCart" method="post">
+                                <img src="photo/steak&chicken.avif" class="card-img-top hover-img" alt="Food 3">
+                                <div class="card-body">
+                                    <h5 class="card-title">Quater Chiken & Steak R55</h5>
+                                    <input type="hidden" name="title" value="Quater Chiken & Steak">
+                                    <input type="hidden" name="price" value="55">
+                                    <input type="hidden" name="image" value="photo/steak&chicken.avif">
+                                    <button class="btn btn-success" type="submit">Add to Cart</button>
+                                </div>
+                            </form>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section id="pork">
+                    <h2 class="text-center mb-4">Pork</h2>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card">    <form action="http://localhost:8080/addToCart" method="post">
+                                <img src="photo/grilled_pork_belly.jpg" class="card-img-top hover-img" alt="Food 1">
+                                <div class="card-body">
+                                    <h5 class="card-title">Grilled Pork Belly R90</h5>
+                                    <input type="hidden" name="title" value="Grilled Pork Belly">
+                                    <input type="hidden" name="price" value="90">
+                                    <input type="hidden" name="image" value="photo/grilled_pork_belly.jpg">
+                                    <button class="btn btn-success" type="submit">Add to Cart</button>
+                                </div>
+                            </form>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card">    <form action="http://localhost:8080/addToCart" method="post">
+                                <img src="photo/pork_ribs.jpg" class="card-img-top hover-img" alt="Food 2">
+                                <div class="card-body">
+                                    <h5 class="card-title">Pork Ribs R70</h5>
+                                    <input type="hidden" name="title" value="Pork Ribs">
+                                    <input type="hidden" name="price" value="70">
+                                    <input type="hidden" name="image" value="photo/pork_ribs.jpg">
+                                    <button class="btn btn-success" type="submit">Add to Cart</button>
+                                </div>
+                            </form>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card">    <form action="http://localhost:8080/addToCart" method="post">
+                                <img src="photo/pork_chop.jpg" class="card-img-top hover-img" alt="Food 3">
+                                <div class="card-body">
+                                    <h5 class="card-title">Pork Chops R80</h5>
+                                    <input type="hidden" name="title" value="Pork Chops">
+                                    <input type="hidden" name="price" value="80">
+                                    <input type="hidden" name="image" value="photo/pork_chop.jpg">
+                                    <button class="btn btn-success" type="submit">Add to Cart</button>
+                                </div>
+                            </form>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card">    <form action="http://localhost:8080/addToCart" method="post">
+                                <img src="photo/pork&sausage.jpg" class="card-img-top hover-img" alt="Food 1">
+                                <div class="card-body">
+                                    <h5 class="card-title">Pork Ribs + Wors R75 </h5>
+                                    <input type="hidden" name="title" value="Pork Ribs + Wors">
+                                    <input type="hidden" name="price" value="75">
+                                    <input type="hidden" name="image" value="photo/pork&sausage.jpg">
+                                    <button class="btn btn-success" type="submit">Add to Cart</button>
+                                </div>
+                            </form>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section id="beef">
+                    <h2 class="text-center mb-4">Beef</h2>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card">    <form action="http://localhost:8080/addToCart" method="post">
+                                <img src="photo/beef_ribs.jpg" class="card-img-top hover-img" alt="Food 1">
+                                <div class="card-body">
+                                    <h5 class="card-title">Beef Ribs R55</h5>
+                                    <input type="hidden" name="title" value="Beef Ribs">
+                                    <input type="hidden" name="price" value="55">
+                                    <input type="hidden" name="image" value="photo/beef_ribs.jpg">
+                                    <button class="btn btn-success" type="submit">Add to Cart</button>
+                                </div>
+                            </form>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card">    <form action="http://localhost:8080/addToCart" method="post">
+                                <img src="photo/beef_chuck.webp" class="card-img-top hover-img" alt="Food 2">
+                                <div class="card-body">
+                                    <h5 class="card-title">Beef Chuck R65</h5>
+                                    <input type="hidden" name="title" value="Beef Chuck">
+                                    <input type="hidden" name="price" value="65">
+                                    <input type="hidden" name="image" value="photo/beef_chuck.webp">
+                                    <button class="btn btn-success" type="submit">Add to Cart</button>
+                                </div>
+                            </form>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+    </main>
+    <script>
+        // JavaScript to add the hover effect
+        document.querySelectorAll('.hover-img').forEach(img => {
+            img.addEventListener('mouseover', () => {
+                img.classList.add('hover-bold');
+            });
+            img.addEventListener('mouseout', () => {
+                img.classList.remove('hover-bold');
+            });
+        });
+    </script>
+
+    <footer class="mt-5">
+        <div class="container">
+            <p>&copy;2024 Shisanyama</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </body>
+    </html>

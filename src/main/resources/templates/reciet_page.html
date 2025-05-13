@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Receipt Page</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="http://localhost:8080/homePage">Shisanyama</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+</nav>
+
+
+<div class="container mx-auto px-4 py-8">
+    <h1 class="text-center mb-5">Receipt</h1>
+    <h1 class="text-center mb-5">Your order is placed.</h1>
+
+    <div class="bg-white shadow-sm rounded-lg p-4 mb-4">
+        <h2 class="text-xl font-weight-bold mb-3">Order Summary</h2>
+        <p class="mb-2"><strong>User:</strong> <span th:text="${user.getFirstName()}"></span></p>
+        <p class="mb-2"><strong>Location:</strong> <span th:text="${location}"></span></p>
+
+        <h3 class="text-lg font-weight-bold mb-2">Items in Cart:</h3>
+        <ul class="list-unstyled">
+            <li th:each="item : ${cartList}" th:text="${item.title + ' - ' + item.price}"></li>
+        </ul>
+    </div>
+
+    <div class="bg-white shadow-sm rounded-lg p-4 mb-4">
+        <h3 class="text-xl font-weight-bold mb-3">Payment Details</h3>
+        <p class="mb-2"><strong>Total Price:</strong> <span th:text="${totalPrice}"></span></p>
+        <p class="mb-2"><strong>VAT Amount:</strong> <span th:text="${vatAmount}"></span></p>
+        <p class="mb-2"><strong>Amount Due:</strong> <span th:text="${amountDue}"></span></p>
+    </div>
+
+    <button type="button" class="btn btn-success mb-4" onclick="window.location.href='http://localhost:8080/homePage'">Home</button>
+
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Account</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title">My Account</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p><strong>First Name:</strong> <span th:text="${user.firstName}"></span></p>
+                            <p><strong>Last Name:</strong> <span th:text="${user.lastName}"></span></p>
+                            <p><strong>Phone Number:</strong> <span th:text="${user.phoneNumber}"></span></p>
+                        </div>
+                        <div class="col-md-6">
+                            <p><strong>Email:</strong> <span th:text="${user.email}"></span></p>
+                            <p><strong>Creation Date:</strong> <span th:text="${#dates.format(user.creationDate, 'dd-MM-yyyy')}"></span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <a href="http://localhost:8080/homePage" class="btn btn-primary">Back to Home</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS (optional, if you need JavaScript) -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

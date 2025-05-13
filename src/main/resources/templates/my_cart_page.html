@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cart Page</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="http://localhost:8080/homePage">Shisanyama</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+</nav>
+
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Shopping Cart</h1>
+
+    <div class="row">
+        <!-- Loop over items in the cart -->
+        <div class="col-md-4" th:each="item : ${cartList}">
+            <div class="card mb-4">
+                <img th:src="${item.url}" class="card-img-top" alt="Product Image">
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${item.title}"></h5>
+                    <p class="card-text">Price: <span th:text="${item.price}"></span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Total Price Calculation -->
+    <div class="row justify-content-center mt-4">
+        <div class="col-md-6 text-center">
+            <form action="http://localhost:8080/showCheckoutPage" method="post">
+            <h4>Total Price: <span th:text="${totalPrice}"></span></h4>
+            <h5>VAT (15%): <span th:text="${vatAmount}"></span></h5>
+            <h4>Total Amount (including VAT): <span th:text="${amountDue}"></span></h4>
+            <button type="submit" class="btn btn-primary mt-3" data-toggle="modal" data-target="#checkoutModal">Proceed to Checkout</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<footer class="mt-5">
+    <div class="container">
+        <p>&copy;2024 Shisanyama</p>
+    </div>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<!-- JavaScript for Total Price Calculation -->
+
+
+<!-- Checkout Modal -->
+<div class="modal fade" id="checkoutModal" tabindex="-1" role="dialog" aria-labelledby="checkoutModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="checkoutModalLabel">Proceed to Checkout</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Proceed to checkout form...</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
